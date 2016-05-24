@@ -81,32 +81,62 @@ div.content {
 }
 
 div.header {
-	position: relative;
-	text-align: center;
+	display: block;
 	width: 100%;
 	height: 40px;
 	background-color: black;
 }
 
 a.login {
-	position: absolute;
+	position: relative;
+	display: block;
 	top: 10px;
-	right: 30px;
+	color: white;
+}
+
+a.bar1 {
+	position: absolute;
+	top: 20px;
+	right: 25%;
+	color: white;
+}
+
+a.bar2 {
+	position: absolute;
+	top: 20px;
+	right: 15%;
+	color: white;
+}
+
+a.bar3 {
+	position: absolute;
+	top: 20px;
+	right: 30%;
 	color: white;
 }
 
 form.login {
 	position: absolute;
-	top: 10px;
+	top: 20px;
 	right: 30px;
 	color: white;
 }
 
 a.title {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	top: 10px;
+	color: white;
 	color: white;
 	font-size: 30px;
 	text-decoration: none !important;
 	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	text-decoration: none !important;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	width: 100%;
 }
 
 input.delete {

@@ -25,3 +25,25 @@
 
 	</form>
 </sec:authorize>
+
+<c:choose>
+	<c:when test="${hasOffer}">
+		<a class="bar1" href="${pageContext.request.contextPath}/createoffer">Edit
+			or delete offer.</a>
+	</c:when>
+	<c:otherwise>
+		<a class="bar1" href="${pageContext.request.contextPath}/createoffer">Add
+			a new offer.</a>
+	</c:otherwise>
+</c:choose>
+&nbsp;
+<sec:authorize access="hasAuthority('ROLE_ADMIN')">
+	<a class="bar3" href="${pageContext.request.contextPath}/admin">Admin
+		Page</a>
+</sec:authorize>
+&nbsp;
+<sec:authorize access="isAuthenticated()">
+	<a class="bar2" href="<c:url value='/messages' />">Messages(<span
+		id="numberMessages">0</span>)
+	</a>
+</sec:authorize>

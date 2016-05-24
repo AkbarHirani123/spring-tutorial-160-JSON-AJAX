@@ -19,26 +19,22 @@
 		</tr>
 	</c:forEach>
 </table>
-<div class="center">
-	<c:choose>
-		<c:when test="${hasOffer}">
-			<p>
-				<a href="${pageContext.request.contextPath}/createoffer">Edit or
-					delete your current offer.</a>
-			</p>
-		</c:when>
-		<c:otherwise>
-			<p>
-				<a href="${pageContext.request.contextPath}/createoffer">Add a
-					new offer.</a>
-			</p>
-		</c:otherwise>
-	</c:choose>
 
 
-	<sec:authorize access="hasAuthority('ROLE_ADMIN')">
-		<p>
-			<a href="${pageContext.request.contextPath}/admin">Admin Page</a>
-		</p>
-	</sec:authorize>
-</div>
+<script type="text/javascript">
+<!--
+	function updateMessageLink(data) {
+		$("#numberMessages").text(data.number);
+	}
+
+	function onLoad() {
+		updatePage();
+		window.setInterval(updatePage, 5000);
+	}
+
+	function updatePage() {
+		$.getJSON("<c:url value="/getmessages" />", updateMessageLink);
+	}
+	$(document).ready(onLoad);
+//-->
+</script>
