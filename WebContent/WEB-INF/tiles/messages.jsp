@@ -34,14 +34,29 @@
 			nameSpan.appendChild(document.createTextNode(message.name + " ("
 					+ message.email + ")"));
 
+			var replyForm = document.createElement("form");
+			replyForm.setAttribute("class", "replyform");
+
+			var textArea = document.createElement("textarea");
+			textArea.setAttribute("class", "replyname");
+
+			var replyButton = document.createElement("input");
+			replyButton.setAttribute("class", "replybutton");
+			replyButton.setAttribute("value", "Reply");
+			replyButton.setAttribute("type", "button");
+
+			replyForm.appendChild(textArea);
+			replyForm.appendChild(replyButton);
+
 			messageDiv.appendChild(subjectSpan);
 			messageDiv.appendChild(contentSpan);
 			messageDiv.appendChild(nameSpan);
+			messageDiv.appendChild(replyForm);
 
 			$("div#messages").append(messageDiv);
 		}
 	}
-	
+
 	function updateMessageNumber(data) {
 		$("#numberMessages").text(data.number);
 	}
