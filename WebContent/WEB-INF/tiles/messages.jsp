@@ -12,6 +12,9 @@
 
 <script type="text/javascript">
 <!--
+	function showReply(i) {
+		$("#form" + i).toggle();
+	}
 	function updateMessageLink(data) {
 
 		$("div#messages").html("");
@@ -31,11 +34,20 @@
 
 			var nameSpan = document.createElement("span");
 			nameSpan.setAttribute("class", "namebody");
-			nameSpan.appendChild(document.createTextNode(message.name + " ("
-					+ message.email + ")"));
+			nameSpan.appendChild(document.createTextNode(message.name + " ("));
+
+			var link = document.createElement("a");
+			link.setAttribute("class", "replylink");
+			link.setAttribute("href", "#");
+			link.setAttribute("onclick", "showReply(" + i + ")");
+			link.appendChild(document.createTextNode(message.email));
+			nameSpan.appendChild(link);
+
+			nameSpan.appendChild(document.createTextNode(")"));
 
 			var replyForm = document.createElement("form");
 			replyForm.setAttribute("class", "replyform");
+			replyForm.setAttribute("id", "form" + i);
 
 			var textArea = document.createElement("textarea");
 			textArea.setAttribute("class", "replyname");

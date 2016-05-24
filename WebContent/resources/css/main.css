@@ -167,6 +167,7 @@ div.message {
 
 form.replyform {
 	padding: 20px;
+	display: none;
 }
 
 textarea.replyname {
@@ -178,4 +179,8 @@ textarea.replyname {
 input.replybutton {
 	display: block;
 	font-size: medium;
+}
+
+a.replylink:link {
+	color: grey;
 }
