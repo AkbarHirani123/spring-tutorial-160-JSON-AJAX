@@ -29,6 +29,8 @@
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/getmessages"
 			access="isAuthenticated()" />
+		<security:intercept-url pattern="/messages"
+			access="isAuthenticated()" />
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/denied"
 			access="permitAll" />

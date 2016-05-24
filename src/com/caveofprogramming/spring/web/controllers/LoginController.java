@@ -108,4 +108,9 @@ public class LoginController {
 		
 		return data;
 	}
+	
+	@RequestMapping("/messages")
+	public String showMessages() {
+		return "messages";
+	}
 }

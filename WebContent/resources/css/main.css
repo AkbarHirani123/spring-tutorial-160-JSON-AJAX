@@ -142,3 +142,25 @@ a.title {
 input.delete {
 	border: 1px solid red;
 }
+
+span.subject {
+	font-size: large;
+	font-weight: bold;
+}
+
+span.contentbody {
+	display: block;
+	font-size: large;
+	font-style: italic;
+}
+
+span.namebody {
+	display: block;
+	font-size: small;
+	color: grey;
+}
+
+div.message {
+	margin-bottom: 20px;
+	border-bottom: 1px dashed grey;
+}
