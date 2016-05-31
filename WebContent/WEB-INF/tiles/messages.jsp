@@ -12,9 +12,12 @@
 
 <script type="text/javascript">
 <!--
+	
 	function showReply(i) {
+		stopTimer();
 		$("#form" + i).toggle();
 	}
+
 	function updateMessageLink(data) {
 
 		$("div#messages").html("");
@@ -42,7 +45,6 @@
 			link.setAttribute("onclick", "showReply(" + i + ")");
 			link.appendChild(document.createTextNode(message.email));
 			nameSpan.appendChild(link);
-
 			nameSpan.appendChild(document.createTextNode(")"));
 
 			var replyForm = document.createElement("form");
@@ -50,7 +52,7 @@
 			replyForm.setAttribute("id", "form" + i);
 
 			var textArea = document.createElement("textarea");
-			textArea.setAttribute("class", "replyname");
+			textArea.setAttribute("class", "replyarea");
 
 			var replyButton = document.createElement("input");
 			replyButton.setAttribute("class", "replybutton");
@@ -75,13 +77,21 @@
 
 	function onLoad() {
 		updatePage();
-		window.setInterval(updatePage, 10000);
+		startTimer();
 	}
 
+	function startTimer() {
+		timer = window.setInterval(updatePage, 5000);
+	}
+
+	function stopTimer() {
+		window.clearInterval(timer);
+	}
+	
 	function updatePage() {
 		$.getJSON("<c:url value="/getmessages" />", updateMessageLink);
 		$.getJSON("<c:url value="/getmessages" />", updateMessageNumber);
 	}
-	$(document).ready(onLoad);
+	
 //-->
 </script>

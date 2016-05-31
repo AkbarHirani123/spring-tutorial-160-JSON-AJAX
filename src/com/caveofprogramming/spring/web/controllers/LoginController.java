@@ -93,7 +93,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/getmessages", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
-	public Map<String, Object> getMEssages(Principal principal) {
+	public Map<String, Object> getMessages(Principal principal) {
 
 		List<Message> messages = null;
 		if (principal == null) {

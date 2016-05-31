@@ -170,7 +170,7 @@ form.replyform {
 	display: none;
 }
 
-textarea.replyname {
+textarea.replyarea {
 	width: 400px;
 	height: 200px;
 	display: block;
