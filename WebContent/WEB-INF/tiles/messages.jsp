@@ -7,8 +7,8 @@
 <b>Messages:</b>
 <br>
 <br>
-<meta name="_csrf" content="${_csrf.token}"/>
-<meta name="_csrf_header" content="${_csrf.headerName}"/>
+<meta name="_csrf" content="${_csrf.token}" />
+<meta name="_csrf_header" content="${_csrf.headerName}" />
 
 
 <div id="messages"></div>
@@ -20,27 +20,34 @@
 		$("#form" + i).toggle();
 	}
 
-	function success() {
-		alert("success");
+	function success(data) {
+		$("#form" + data.target).toggle();
+		$("#alert" + data.target).text("Message Sent.");
+		startTimer();
 	}
 
-	function error() {
+	function error(data) {
 		alert("error");
 	}
 
 	function sendMessage(i, name, email) {
 
-		var text = $("#textbox"+ i).val();
+		var text = $("#textbox" + i).val();
 		var token = $("meta[name='_csrf']").attr("content");
 		var header = $("meta[name='_csrf_header']").attr("content");
 
 		$.ajax({
 			"type" : 'POST',
 			"url" : '<c:url value="/sendmessage" />',
-			"data" : JSON.stringify({"text": text, "name": name, "email": email}),
-			beforeSend: function(xhr) {
+			"data" : JSON.stringify({
+				"target" : i,
+				"text" : text,
+				"name" : name,
+				"email" : email
+			}),
+			beforeSend : function(xhr) {
 				xhr.setRequestHeader(header, token);
-				},
+			},
 			"success" : success,
 			"error" : error,
 			contentType : "application/json",
@@ -77,6 +84,11 @@
 			nameSpan.appendChild(link);
 			nameSpan.appendChild(document.createTextNode(")"));
 
+			var alertSpan = document.createElement("span");
+			alertSpan.setAttribute("class", "alert");
+			alertSpan.setAttribute("id", "alert" + i);
+			//alertSpan.appendChild(document.createTextNode("Message Sent"));
+
 			var replyForm = document.createElement("form");
 			replyForm.setAttribute("class", "replyform");
 			replyForm.setAttribute("id", "form" + i);
@@ -101,6 +113,7 @@
 			messageDiv.appendChild(subjectSpan);
 			messageDiv.appendChild(contentSpan);
 			messageDiv.appendChild(nameSpan);
+			messageDiv.appendChild(alertSpan);
 			messageDiv.appendChild(replyForm);
 
 			$("div#messages").append(messageDiv);

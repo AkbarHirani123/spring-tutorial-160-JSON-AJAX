@@ -184,3 +184,9 @@ input.replybutton {
 a.replylink:link {
 	color: grey;
 }
+
+span.alert {
+	display: block;
+	color: green;
+	font-size: medium;
+}
