@@ -14,8 +14,14 @@
 	function onLoad() {
 		updatePage();
 		startTimer();
+		if (timer == null)
+			alert("what?");
 	}
-
+	
+	function startTimer() {
+		timer = window.setInterval(updatePage, 5000);
+	}
+	
 	function updatePage() {
 		$.getJSON("<c:url value="/getmessages" />", updateMessageLink);
 	}
